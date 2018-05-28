@@ -12,7 +12,16 @@
 #include <string>
 #include "IllegalCoordinateException.h"
 #include <fstream>
+#include <math.h>       /* sqrt */
+typedef std::vector<int> Coordinate;
 using namespace std;
+
+struct RGB {
+  uint8_t red, green, blue;
+public:
+  RGB() {}
+  RGB(uint8_t red, uint8_t green, uint8_t blue): red(red), green(green), blue(blue) {}
+};
 
 class Board{
 
@@ -27,7 +36,9 @@ public:
     Board(int nLength=2);
     ~Board(){}
     void print();
-    string draw(int sz);
+  //  string draw(int sz);
+string draw(int n);
+    void drawX(int ,int);
 //opertaors
 friend  bool operator!=(const Board& a,const Board& b);
 friend  bool operator ==(const Board& a,const Board& b);
