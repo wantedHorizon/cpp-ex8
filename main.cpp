@@ -7,8 +7,12 @@ using namespace std;
 
 
 
-int main() {
+int main() {/*
+	string s;
+cin>>s;
+cout<<s.find('<')<<endl;
 
+*/
 	Board board;
   cin>>board;
 
@@ -17,5 +21,3 @@ int main() {
 	string filename = board.draw(600);
 	cout << filename << endl;
 }
-
-
