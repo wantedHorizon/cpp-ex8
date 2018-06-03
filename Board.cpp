@@ -29,7 +29,7 @@ if(size>1600){
   size=1600;
 
 }
-cout<<aa<<endl;
+
 if(size>1000){
   cout<<"while opening the img plz zoom in to see correctly \n res is to high "<<endl;
 }
