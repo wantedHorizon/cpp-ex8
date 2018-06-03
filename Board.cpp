@@ -22,68 +22,6 @@ public:
 
 */
 
-istream& operator>>(istream& in,Board& b){
-    string location ;
-  //  cout<<in<<endl;
-    int s = 0, loc = 0;
-    in >> location;
-//   cout<<location<<endl;
-    if(location.find(".txt")>1000 ||location.find("X")<1000 ||location.find("O")<1000){
-  //    cout<<"first if"<<location.find("<")<<endl;
-
-    s = location.length();
-
-    Board bb{s};
-    b=bb;
-    while (in)
-    {
-        for (int j = 0; j < s; j++){
-          if(location[j]=='X'||location[j]=='O')
-          b[{loc, j}] = location[j];
-
-        }
-        in >> location;
-        loc++;
-    }
-    return in;}
-    else{
-
-  //   cout<<"sec"<<endl;
-    string bd="";
-    ifstream infile;
-    infile.open(location);
-    string temp;
-    while(infile>>temp){
-      bd+=temp;
-    }
-  //cout<<bd<<endl;
-  infile.close();
-  int lng=sqrt(bd.length() );
-  ///cout<<bd<<'\n'<<lng<<endl;
-  Board nB{lng};
-  //nB.print();
-  int size=0;
-
-  for (int i = 0; i < lng; i++) {
-      for (int z = 0; z < lng; z++) {
-        //cout<<bd[size];
-        char x= bd[size];
-        if((bd[size]=='X')||(bd[size]=='O'))
-        nB[{i,z}] = x;
-
-        size++;
-      }
-  }
-
-  //nB[1][1] = 'X';
-  b=nB;
-  //cout<<"nB\n"<<nB<<endl;
-
-  //cout<<"board\n"<<board<<endl;
-  return in;
-  }
-}
-
 
 std::string Board::draw(int size){
 Board aa{length};
@@ -100,7 +38,7 @@ if(size>1000){
 	std::string NAME = "board"+to_string(length)+"_"+to_string(size)+"x"+to_string(size)+".ppm";*/
 
 
- string filename="Board";//+to_string(size)+"x"+to_string(size);
+ string filename="Board_"+to_string(length)+"--"+to_string(size)+"x"+to_string(size);
     struct stat buffer ;
     string file=filename+".ppm";
     int i=0;
@@ -407,6 +345,70 @@ bool Board::verify(const char ch){
       return false;
     }
 }
+
+istream& operator>>(istream& in,Board& b){
+    string location ;
+  //  cout<<in<<endl;
+    int s = 0, loc = 0;
+    in >> location;
+//   cout<<location<<endl;
+    if(location.find(".txt")>1000 ||location.find("X")<1000 ||location.find("O")<1000){
+  //    cout<<"first if"<<location.find("<")<<endl;
+
+    s = location.length();
+
+    Board bb{s};
+    b=bb;
+    while (in)
+    {
+        for (int j = 0; j < s; j++){
+          if(location[j]=='X'||location[j]=='O')
+          b[{loc, j}] = location[j];
+
+        }
+        in >> location;
+        loc++;
+    }
+    return in;}
+    else{
+
+  //   cout<<"sec"<<endl;
+    string bd="";
+    ifstream infile;
+    infile.open(location);
+    string temp;
+    while(infile>>temp){
+      bd+=temp;
+    }
+  //cout<<bd<<endl;
+  infile.close();
+  int lng=sqrt(bd.length() );
+  ///cout<<bd<<'\n'<<lng<<endl;
+  Board nB{lng};
+  //nB.print();
+  int size=0;
+
+  for (int i = 0; i < lng; i++) {
+      for (int z = 0; z < lng; z++) {
+        //cout<<bd[size];
+        char x= bd[size];
+        if((bd[size]=='X')||(bd[size]=='O'))
+        nB[{i,z}] = x;
+
+        size++;
+      }
+  }
+
+  //nB[1][1] = 'X';
+  b=nB;
+  //cout<<"nB\n"<<nB<<endl;
+
+  //cout<<"board\n"<<board<<endl;
+  return in;
+  }
+}
+
+
 
 bool Board::verify(const Board& other){
   for (int i = 0; i <length ; ++i)
