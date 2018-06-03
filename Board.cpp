@@ -24,10 +24,11 @@ public:
 
 istream& operator>>(istream& in,Board& b){
     string location ;
+  //  cout<<in<<endl;
     int s = 0, loc = 0;
     in >> location;
-  //  cout<<location<<endl;
-    if(location.find(".txt")<10000 ||location.find("X")<10000 ||location.find("O")<10000){
+//   cout<<location<<endl;
+    if(location.find(".txt")>1000 ||location.find("X")<1000 ||location.find("O")<1000){
   //    cout<<"first if"<<location.find("<")<<endl;
 
     s = location.length();
