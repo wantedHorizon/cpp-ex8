@@ -1,5 +1,9 @@
 #include <iostream>
 #include "Board.h"
+#include <math.h>
+#include <string.h>
+#include <fstream>
+#include <sys/stat.h>
 
 using namespace std;
 
@@ -32,11 +36,23 @@ if(size>1600){
 
 if(size>1000){
   cout<<"while opening the img plz zoom in to see correctly \n res is to high "<<endl;
-}
-	std::string NAME = "board"+to_string(length)+"_"+to_string(size)+"x"+to_string(size)+".ppm";
+}/*
+	std::string NAME = "board"+to_string(length)+"_"+to_string(size)+"x"+to_string(size)+".ppm";*/
+
+
+ string filename="Board";
+    struct stat buffer ;
+    string file=filename+".ppm";
+    int i=0;
+    //check for existing files
+    while(stat (file.c_str(), &buffer) == 0){
+        file=filename+"_"+to_string(i)+".ppm";
+        i++;
+    }
+    filename=file;
 	const int constX = size, constY = size;
 
-	ofstream output(NAME, /*ios::app |*/ios::binary );
+	ofstream output(filename, ios::app |ios::binary );
 //ios::noreplace דרישה שהקובץ לא יהיה קיים (מתאים לכתיבה)
 	output << "P6" << endl << constX <<" " << constY << endl << 255 << endl;
 
@@ -159,7 +175,7 @@ if(size>1000){
 
 	output.close ();
 
-	return NAME;
+	return filename;
 }
 
 
