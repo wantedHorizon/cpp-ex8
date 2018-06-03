@@ -29,14 +29,14 @@ if(size>1600){
   size=1600;
 
 }
-
+cout<<aa<<endl;
 if(size>1000){
   cout<<"while opening the img plz zoom in to see correctly \n res is to high "<<endl;
 }
 	std::string NAME = "board"+to_string(length)+"_"+to_string(size)+"x"+to_string(size)+".ppm";
 	const int constX = size, constY = size;
 
-	ofstream output(NAME, ios::app |ios::binary );
+	ofstream output(NAME, /*ios::app |*/ios::binary );
 //ios::noreplace דרישה שהקובץ לא יהיה קיים (מתאים לכתיבה)
 	output << "P6" << endl << constX <<" " << constY << endl << 255 << endl;
 
