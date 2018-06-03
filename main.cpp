@@ -16,7 +16,7 @@ int main() {
 //x=[0];
 //	cout<<bd<<bd.length()<<endl;
 
-	string filename = board.draw(1600);
+	string filename = board.draw(600);
 	cout << filename << endl;
 }
 
