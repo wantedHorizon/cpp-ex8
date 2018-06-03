@@ -112,7 +112,7 @@ if(size>1000){
     filename=file;
 	const int constX = size, constY = size;
 
-	ofstream output(filename,ios::app |ios::binary);
+	ofstream output(filename/*,ios::app |ios::binary*/);
 //ios::noreplace דרישה שהקובץ לא יהיה קיים (מתאים לכתיבה)
 	output << "P6" << endl << constX <<" " << constY << endl << 255 << endl;
 
