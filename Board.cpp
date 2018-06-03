@@ -26,9 +26,9 @@ istream& operator>>(istream& in,Board& b){
     string location ;
     int s = 0, loc = 0;
     in >> location;
-    cout<<location<<endl;
-    if(location.find(".txt")<10000 ||location.find("X")<10000 ||location.find("O")<10000){ 
-      cout<<"first if"<<location.find("<")<<endl;
+  //  cout<<location<<endl;
+    if(location.find(".txt")<10000 ||location.find("X")<10000 ||location.find("O")<10000){
+  //    cout<<"first if"<<location.find("<")<<endl;
 
     s = location.length();
 
@@ -47,7 +47,7 @@ istream& operator>>(istream& in,Board& b){
     return in;}
     else{
 
-     cout<<"sec"<<endl;
+  //   cout<<"sec"<<endl;
     string bd="";
     ifstream infile;
     infile.open(location);
